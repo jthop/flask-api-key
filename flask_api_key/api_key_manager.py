@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-should be
-api_key
-APIKey
-"""
 
-import hashlib
+"""
 from passlib.apps import custom_app_context
 from passlib import pwd
 from uuid import uuid4

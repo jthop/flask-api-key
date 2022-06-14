@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flask-api-key"
+description = "Provide api-key based auth for your apis."
+readme = "README.md"
+keywords = ["api", "auth"]
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Framework :: Flask",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "flask",
+    "passlib",
+    'importlib-metadata; python_version<"3.8"',
+]
+dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = {attr = "__init__.__version__"}
