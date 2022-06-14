@@ -70,8 +70,8 @@ Fetch your endpoint with your key in the Auth header
 
 Configure as you would any other flask extension.  Currently the config variables available are:
 
-FLASK_API_KEY_HEADER_NAME = 'Authorization'
-FLASK_API_KEY_HEADER_TYPE = 'Bearer'
-FLASK_API_KEY_PREFIX = 'oil'
-FLASK_API_KEY_SECRET_LENGTH = 64
-FLASK_API_KEY_SECRET_CHARSET = 'ascii_62'
+    FLASK_API_KEY_HEADER_NAME = 'Authorization'
+    FLASK_API_KEY_HEADER_TYPE = 'Bearer'
+    FLASK_API_KEY_PREFIX = 'oil'
+    FLASK_API_KEY_SECRET_LENGTH = 64
+    FLASK_API_KEY_SECRET_CHARSET = 'ascii_62'
