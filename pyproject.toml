@@ -22,4 +22,4 @@ dependencies = [
 dynamic = ["version"]
 
 [tool.setuptools.dynamic]
-version = {attr = "__init__.__version__"}
+version = {attr = "flask_api_key.__version__"}

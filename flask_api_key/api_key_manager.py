@@ -2,8 +2,6 @@
 """
 
 """
-from passlib.apps import custom_app_context
-from passlib import pwd
 from uuid import uuid4
 
 from flask import current_app
@@ -171,6 +169,8 @@ class APIKeyManager(object):
         Returns:
             Return: String - the hashed version of the entire api_key
         """
+        from passlib.apps import custom_app_context
+        
         return custom_app_context.hash(full_key)
 
     @staticmethod
@@ -213,6 +213,8 @@ class APIKeyManager(object):
             obj: The user created obj representing the api_key is returned.
 
         """
+        from passlib.apps import custom_app_context
+
         hashed = obj.hashed_key
         return custom_app_context.verify(unverified_key, hashed) 
 
@@ -265,6 +267,11 @@ class APIKeyManager(object):
 #
 #########################
 
+try:
+    from passlib import pwd
+except:
+    from . import py_pwd as pwd
+
 
 class APIKey(object):
     """
@@ -292,6 +299,7 @@ class APIKey(object):
     def __init__(self):
         """
         """
+
         self._mgr = get_api_key_manager()
         self._config = self._mgr.config
         
@@ -306,22 +314,26 @@ class APIKey(object):
     def keys(self):
         """Attributes we want to unpack into db obj
         """
+
         return ['label', 'uuid', 'hashed_key']
 
     def __getitem__(self, a):
         """Implemented to facilitate convenient unpacking
         """
+
         return getattr(self, a)
 
     def hash(self, full_key):
         """Function to hash the key for storage in a db.  Any hash could be
         used, we should take care to protect this just as we would a password.
         """
+
         return self._mgr._hash_api_key_callback(full_key)
 
     def _parse_key(self):
         """
         """
+
         parts = self._full_key.replace('_', '.').split('.')
         
         if len(parts) != 3:
@@ -348,6 +360,7 @@ class APIKey(object):
         Returns:
             True/False if the key is valid
         """
+
         self._full_key = unverified_key
         obj = self._parse_key()
 
