@@ -17,8 +17,8 @@ else
 	echo "Welcome to git stranger.\n"
 fi
 
-awk '{n=$NF+1; gsub(/[0-9]+$/,n) } { print> "src/__init__.py";}' src/__init__.py
-git add ./src/__init__.py
+awk '{n=$NF+1; gsub(/[0-9]+$/,n) } { print> "flask_api_key/__init__.py";}' flask_api_key/__init__.py
+git add ./flask_api_key/__init__.py
 
 # If there are whitespace errors, print the offending file names and fail.
 exec git diff-index --check --cached $against --
