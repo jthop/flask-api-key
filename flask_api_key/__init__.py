@@ -9,7 +9,7 @@ from .utils import current_api_key
 
 
 __version__ = '0.1.4'
-__build__ = 216
+__build__ = 218
 __app_version__ = f'{__version__}+build.{__build__}'
 __author__ = '@jthop'
 __copyright__ = f'Copyright 2022 {__author__}'
