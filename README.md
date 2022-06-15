@@ -73,10 +73,11 @@ Fetch your endpoint with your key in the Auth header
 The extension is configured via Flask's built-in config object, app.config.  If unfamiliar with Flask's app.config, you can read more at:
 <https://flask.palletsprojects.com/en/2.0.x/api/?highlight=app%20config#configuration>
 
-
-- **FLASK_API_KEY_LOCATION** - Where to look for the api_key (*Default='Header'*)
-- **FLASK_API_KEY_HEADER_NAME** - Which header to use (only for location=Header) (*Default='Authorization'*)
-- **FLASK_API_KEY_HEADER_TYPE** - Which sub-header to use in HEADER_NAME (only for location=Header) (*Default='Bearer'*)
-- **FLASK_API_KEY_PREFIX** - api_key prefix - can be used to identify your sites keys in a breach (*Default='oil'*)
-- **FLASK_API_KEY_SECRET_LENGTH** - How many characters long the secret key portion will be (*Default=64*)
-- **FLASK_API_KEY_SECRET_CHARSET** - Passlib compliant charset name to use (*Default='ascii_62'*)
+| Variable | Default | Description |
+| --- | --- | --- |
+| `FLASK_API_KEY_LOCATION` | 'Header' | Location of api_key in the request |
+| `FLASK_API_KEY_HEADER_NAME` | 'Authorization' | Which header to use |
+| `FLASK_API_KEY_HEADER_TYPE` | 'Bearer' | Which header type to use in HEADER_NAME |
+| `FLASK_API_KEY_PREFIX` | 'oil' | Can be used to identify your sites keys in a breach |
+| `FLASK_API_KEY_SECRET_LENGTH` | 64 | How many characters long the secret key portion will be |
+| `FLASK_API_KEY_SECRET_CHARSET` | 'ascii_62' | Passlib compliant charset name to use |
