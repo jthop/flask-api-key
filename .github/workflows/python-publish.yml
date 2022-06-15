@@ -25,16 +25,6 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
-    - name: Autobump build number
-      run: |
-        # __build__ = X, X++
-        LINE='__build__ ='
-        FILE='flask_api_key/__init__.py'
-        # ensure the LINE is there. If grep doesn't find the LINE
-        # it exits with exit code 1 and github actions aborts the build. 
-        grep "$LINE" "$FILE"
-        awk '{n=$NF+1; gsub(/[0-9]+$/,n) } { print> "$FILE";}' $FILE
-      shell: bash
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
