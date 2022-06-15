@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Upload Python Package
+name: Build package and publish to pypi
 
 on:
   [push]
@@ -15,10 +15,9 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
-
+  build:
     runs-on: ubuntu-latest
-
+    if: "contains(github.event.head_commit.message, 'build')"
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
