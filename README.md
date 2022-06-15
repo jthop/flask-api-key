@@ -1,12 +1,14 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 # flask-api-key
 
-Simple Flask Extension to easily add api auth using the good tried and tested api-key model.  
+Simple Flask Extension to easily add api auth using the good tried and tested api-key model.
 
 JWTs can be great.  Especially if you have 100 microservices and are growing at the rate of Facebook.  But
-for those of us that are not scaling at the rate of Facebook or Google, JWTs may be unnecessary.  Tokens 
-can be instantly revoked.  No complexity added to worry about tokens expiring and how to swap for a new 
+for those of us that are not scaling at the rate of Facebook or Google, JWTs may be unnecessary.  Tokens
+can be instantly revoked.  No complexity added to worry about tokens expiring and how to swap for a new
 one, while also worrying about how to protect the refresh-token.
 
 Let's look at the pros of each
@@ -31,19 +33,19 @@ Let's look at the pros of each
 ## Use ##
 
 First step install the extension.
-    
+
     pip install flask-api-key
-    
+
 Now add to your flask project with or without the *app factory* pattern
 
     from flask import Flask
     from flask_api_key import APIKeyManager
-    
+
     app = Flask(__name__)
     mgr = APIKeyManager(app)
-    
+
     -OR-
-    
+
     mgr = APIKeyManager()
     ...
     def create_app():
@@ -55,22 +57,22 @@ Create an api-key
 
     my_key = mgr.create('MY_FIRST_KEY')
     print(my_key.secret)
-    
+
 Decorate an endpoint
 
     from flask_api_key import api_key_required
-    
+
     @route('/api/v1/secure')
     @api_key_required
     def my_endpoint():
         return jsonify({'foo': 'bar'})
-        
+
 Fetch your endpoint with your key in the Auth header
 
 
 ## Configuration ##
 
-The extension is configured via Flask's built-in config object, app.config.  If unfamiliar with Flask's app.config, you can read more at: 
+The extension is configured via Flask's built-in config object, app.config.  If unfamiliar with Flask's app.config, you can read more at:
 <https://flask.palletsprojects.com/en/2.0.x/api/?highlight=app%20config#configuration>
 
 

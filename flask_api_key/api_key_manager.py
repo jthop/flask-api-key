@@ -1,18 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-
 """
-from uuid import uuid4
-
-from flask import current_app
 from flask import jsonify
-from flask import _request_ctx_stack
 
 from .exceptions import APIKeyError
 from .exceptions import APIKeyNotFound
-from .exceptions import MalformedAPIKey
-from .exceptions import YouMustBeLost
-from .utils import get_api_key_manager
+from .api_key import APIKey
 
 
 #########################
@@ -23,7 +16,7 @@ from .utils import get_api_key_manager
 
 
 class APIKeyManager(object):
-    
+
     POSSIBLE_LOCATIONS = ['header']
 
     def __init__(self, app=None):
@@ -89,16 +82,6 @@ class APIKeyManager(object):
         self._create_api_key_callback = callback
         return callback
 
-    def hash_api_key_loader(self, callback):
-        """Decorator to provide user defined function to hash the
-        apikey for safe storage.
-
-        See the default for func signature details
-        """
-
-        self._hash_api_key_callback = callback
-        return callback
-
     def fetch_api_key_loader(self, callback):
         """Decorator to fetch user defined apikeys from
         the db.
@@ -107,6 +90,16 @@ class APIKeyManager(object):
         """
 
         self._fetch_api_key_callback = callback
+        return callback
+
+    def hash_api_key_loader(self, callback):
+        """Decorator to provide user defined function to hash the
+        apikey for safe storage.
+
+        See the default for func signature details
+        """
+
+        self._hash_api_key_callback = callback
         return callback
 
     def verify_api_key_loader(self, callback):
@@ -139,12 +132,12 @@ class APIKeyManager(object):
             Return the obj which the user just created.
 
         -EXAMPLE CALLBACK-
-        
+
         @mgr.create_api_key_loader
         def create_api_key(apikey):
             user_api_key = models.UserAPIKey(**api_key)
             user_api_key.save()
-        
+
         # WHICH IS THE SAME AS
         @mgr.create_api_key_loader
         def create_api_key(api_key):
@@ -161,19 +154,6 @@ class APIKeyManager(object):
         return None
 
     @staticmethod
-    def default_hash_api_key_callback(full_key):
-        """This default uses the battle-tested passlib library.  Most
-        apps will be perfectly fine with this hashlib.
-        Args:
-            full_key: String - a full, clear unhashed api_key
-        Returns:
-            Return: String - the hashed version of the entire api_key
-        """
-        from passlib.apps import custom_app_context
-        
-        return custom_app_context.hash(full_key)
-
-    @staticmethod
     def default_fetch_api_key_callback(uuid):
         """THIS CALLBACK MUST BE IMPLEMENTED FOR THE DEFAULT CODE TO WORK.
         WITHOUT THIS CB NO APIKEY WILL EVER AUTHENTICATE.
@@ -187,7 +167,7 @@ class APIKeyManager(object):
             or raise an exception.
 
         -EXAMPLE CALLBACK-
-        
+
         @mgr.fetch_api_key_loader
         def fetch_api_key(uuid):
             try:
@@ -199,6 +179,19 @@ class APIKeyManager(object):
             return obj.hashed_api_key
         """
         return None
+
+    @staticmethod
+    def default_hash_api_key_callback(full_key):
+        """This default uses the battle-tested passlib library.  Most
+        apps will be perfectly fine with this hashlib.
+        Args:
+            full_key: String - a full, clear unhashed api_key
+        Returns:
+            Return: String - the hashed version of the entire api_key
+        """
+        from passlib.apps import custom_app_context
+
+        return custom_app_context.hash(full_key)
 
     @staticmethod
     def default_verify_api_key_callback(unverified_key, obj):
@@ -216,7 +209,7 @@ class APIKeyManager(object):
         from passlib.apps import custom_app_context
 
         hashed = obj.hashed_key
-        return custom_app_context.verify(unverified_key, hashed) 
+        return custom_app_context.verify(unverified_key, hashed)
 
     @staticmethod
     def default_error_handler_callback(e):
@@ -234,7 +227,7 @@ class APIKeyManager(object):
 
         response = jsonify({
             'title': e.title,
-            'message': e.message, 
+            'message': e.message,
             'status_code': e.status_code
         })
         response.status_code = e.status_code
@@ -247,7 +240,7 @@ class APIKeyManager(object):
             label - required.  Simple label for the key.
 
         -EXAMPLE USAGE-
-        
+
         mgr = get_apikey_manager()
         my_key = mgr.create('MY_SECURE_APIKEY')
 
@@ -259,141 +252,3 @@ class APIKeyManager(object):
         ak = APIKey()
         ak.gen_key(label)
         return self._create_api_key_callback(ak)
-
-
-#########################
-#
-#    ApiKey
-#
-#########################
-
-try:
-    from passlib import pwd
-except:
-    from . import py_pwd as pwd
-
-
-class APIKey(object):
-    """
-    The primary purpose of this class is to create the opaque tokens to use 
-    as apikeys.
-
-    key = oil_<uuid>.<secret>
-    hashed_key = hash(key)
-    lookup(uuid)
-
-    Example of creating:
-    ak = APIKey()
-    ak.gen_key('MY_NEW_KEY')
-    print(ak.secret) # WRITE THIS DOWN, NEVER AGAIN
-
-    Example of parsing:
-    unverified = request.extract('X-Api-Key')
-    ak = APIKey()
-    ak.parse(unverified)
-
-    """
-
-    CHARSET = 'ascii_62'
-
-    def __init__(self):
-        """
-        """
-
-        self._mgr = get_api_key_manager()
-        self._config = self._mgr.config
-        
-        self.label = None
-        self.uuid = None
-        self.hashed_apikey = None
-
-        self._full_key = None
-        self._secret = None
-        self._destroyed = False
-
-    def keys(self):
-        """Attributes we want to unpack into db obj
-        """
-
-        return ['label', 'uuid', 'hashed_key']
-
-    def __getitem__(self, a):
-        """Implemented to facilitate convenient unpacking
-        """
-
-        return getattr(self, a)
-
-    def hash(self, full_key):
-        """Function to hash the key for storage in a db.  Any hash could be
-        used, we should take care to protect this just as we would a password.
-        """
-
-        return self._mgr._hash_api_key_callback(full_key)
-
-    def _parse_key(self):
-        """
-        """
-
-        parts = self._full_key.replace('_', '.').split('.')
-        
-        if len(parts) != 3:
-            raise MalformedAPIKey()
-        if parts[0] != self._config['prefix']:
-            raise YouMustBeLost()
-
-        self._uuid = parts[1]
-        self._secret = parts[2]
-
-        obj = self._mgr._fetch_api_key_callback(self._uuid) or None
-        if obj is None:
-            raise APIKeyNotFound()
-        
-        _request_ctx_stack.top.api_key = obj
-        return obj
-
-    def verify_key(self, unverified_key):
-        """Parse an apikey found in request
-        Args:
-            unverified_key: This is the full, unhashed, unverified key found in
-        the request.
-
-        Returns:
-            True/False if the key is valid
-        """
-
-        self._full_key = unverified_key
-        obj = self._parse_key()
-
-        return self._mgr._verify_api_key_callback(unverified_key, obj)
-
-    def gen_key(self, label):
-        """
-        62 character charset has 5.95 entropy per character
-        64 character secret has ~380 bits entropy
-        """
-
-        prefix = self._config['prefix']
-        length = self._config['secret_length']
-        charset = self._config['secret_charset']
-
-        uuid = uuid4().hex
-        secret = pwd.genword(length=length, charset=charset)
-        full_key = f'{prefix}_{uuid}.{secret}'
-        hashed_key = self.hash(full_key)
-
-        self.label = label
-        self.uuid = uuid
-        self.hashed_key = hashed_key
-        self._full_key = full_key
-        
-    @property
-    def secret(self):
-        if self._destroyed:
-            return 'SORRY_THE_SECRET_HAS_SELF_DESTRUCTED'
-        
-        self._destroyed = True
-        temp = self._full_key
-        del self._full_key
-        return temp
-
-        
