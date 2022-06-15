@@ -57,18 +57,16 @@ class APIKey(object):
 
         self.label = None
         self.uuid = None
-        self.uuid_str = None
+        self.friendly_uuid = None
         self.hashed_key = None
 
-        self._full_key = None
-
-    def to_dict(self):
+    def export(self):
         d = {
             'label': self.label,
             'uuid': self.uuid,
-            'uuid_str': self.uuid_str,
+            'friendly_uuid': self.friendly_uuid,
             'hashed_key': self.hashed_key,
-            'do_not_store_full_key': self._full_key
+            'do_not_store_full_key': self.full_key
         }
         return d
 
@@ -97,7 +95,10 @@ class APIKey(object):
         return self._mgr._hash_api_key_callback(full_key)
 
     def _parse_key(self):
-        """
+        """Internally used by verify_key().  Splits the key into prefix,
+        uuid, and secret so we can lookup in db by uuid.
+        Returns:
+            Returns the db obj which was returned by the user-defined callback
         """
 
         parts = self._full_key.replace('_', '.').split('.')
@@ -131,32 +132,32 @@ class APIKey(object):
         return self._mgr._verify_api_key_callback(unverified_key, obj)
 
     def gen_key(self, label):
+        """62 character charset has 5.95 entropy per character
+           64 character secret has ~380 bits entropy
         """
-        62 character charset has 5.95 entropy per character
-        64 character secret has ~380 bits entropy
+
+        uuid = uuid4()
+        secret = self._genword(
+            length=self._cfg['secret_length'],
+            charset=self._cfg['secret_charset']
+        )
+
+        self.label = label
+        self.uuid = uuid.hex
+        self.friendly_uuid = str(uuid)
+        self._secret = secret
+
+        self.hashed_key = self._hash(self.full_key)
+
+    @property
+    def full_key(self):
+        """If we have all the pieces, construct the full_key.  Only
+        on the fly gives us less chance of compromise.
         """
 
         prefix = self._cfg['prefix']
-        length = self._cfg['secret_length']
-        charset = self._cfg['secret_charset']
 
-        uuid = uuid4()
-        secret = self._genword(length=length, charset=charset)
-        full_key = f'{prefix}_{uuid.hex}.{secret}'
-        hashed_key = self._hash(full_key)
-
-        self.label = label
-
-        self.uuid = uuid.hex
-        self.uuid_str = str(uuid)
-        self.hashed_key = hashed_key
-        self._full_key = full_key
-
-    @property
-    def not_to_save_on_server(self):
-        if hasattr(self, '_full_keuy'):
-            temp = self._full_key
-            del self._full_key
-            return temp
-
-        return 'SORRY_THE_SECRET_HAS_SELF_DESTRUCTED'
+        if self.prefix and self.uuid and self._secret:
+            full_key = f'{prefix}_{self.uuid}.{self._secret}'
+            return full_key
+        return None

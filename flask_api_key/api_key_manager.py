@@ -122,28 +122,34 @@ class APIKeyManager(object):
         return callback
 
     @staticmethod
-    def default_create_api_key_callback(apikey):
+    def default_create_api_key_callback(key_dict):
         """This empty callback is a placeholder.
 
         Args:
-            apikey - an ApiKey object created by this manager
-            with a unique and secure key.
+            apikey - an ApiKey representation exported
+            to a python dict.  The dict has keys:
+                label
+                uuid
+                friendly_uuid
+                hashed_key
+                do_not_store_full_key
         Returns:
             Return the obj which the user just created.
 
         -EXAMPLE CALLBACK-
 
         @mgr.create_api_key_loader
-        def create_api_key(apikey):
-            user_api_key = models.UserAPIKey(**api_key)
+        def create_api_key(key_dict):
+            user_api_key = models.UserAPIKey(**key_dict)
             user_api_key.save()
 
         # WHICH IS THE SAME AS
         @mgr.create_api_key_loader
-        def create_api_key(api_key):
+        def create_api_key(key_dict):
             user_api_key = models.UserAPIKey()
-            user_api_key.label = api_key.label
-            user_api_key.hashed_key = api_key.hashed_key
+            user_api_key.uuid = key_dict['uuid']
+            user_api_key.label = key_dict['label']
+            user_api_key.hashed_key = key_dict['hashed_key']
             user_api_key.save()
 
             # and finally
@@ -176,7 +182,7 @@ class APIKeyManager(object):
                 return None
             if obj.revoked:
                 return None
-            return obj.hashed_api_key
+            return obj
         """
         return None
 
@@ -196,7 +202,7 @@ class APIKeyManager(object):
     @staticmethod
     def default_verify_api_key_callback(unverified_key, obj):
         """This callback will work unmodified as long as you hash your keys
-        using the supplied default and use the hashed_apikey attribute to store
+        using the supplied default and use the hashed_key attribute to store
         them in your db model.
 
         Args:
@@ -251,4 +257,4 @@ class APIKeyManager(object):
 
         ak = APIKey()
         ak.gen_key(label)
-        return self._create_api_key_callback(ak)
+        return self._create_api_key_callback(ak.export())

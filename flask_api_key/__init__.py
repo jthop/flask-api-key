@@ -9,8 +9,7 @@ from .utils import get_ext_config
 from .utils import current_api_key
 
 
-__build__ = 238
-__version__ = '0.1.7'
+__version__ = '0.3.8+build.280'
 __author__ = '@jthop'
 __copyright__ = f'Copyright 2022 {__author__}'
 
