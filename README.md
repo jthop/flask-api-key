@@ -13,7 +13,7 @@ But for those of us that are not scaling at the rate of Facebook or Google, JWTs
 So obviously, we believe.  However, while there are tons of JWT/JWS/JWE,JWABC token extensions, very few api key extensions exist.  So, this is my attempt to fill that void.
 
 
-## Install :toolbox: ##
+## Install :floppy_disk: ##
 
 
 First things first, install it.
@@ -71,7 +71,7 @@ curl https://yoursite.com/api/v1/secure
    -H "Authorization: Bearer INSERT_YOUR_API_KEY_HERE"
 ```
 
-## Extension Configuration ##
+## Extension Configuration :toolbox: ##
 
 
 | Variable | Default | Type | Description |
