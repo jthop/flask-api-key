@@ -5,6 +5,7 @@
 from .api_key_manager import APIKeyManager
 from .api_key_manager import APIKey
 from .decorators import api_key_required
+from .utils import get_ext_config
 from .utils import current_api_key
 
 
