@@ -6,7 +6,6 @@ repos:
     -   id: end-of-file-fixer
     -   id: check-yaml
     -   id: check-toml
-    -   id: name-tests-test
     -   id: requirements-txt-fixer
     -   id: fix-encoding-pragma
 -   repo: https://github.com/pre-commit/mirrors-autopep8
@@ -17,3 +16,4 @@ repos:
     rev: 4.0.1
     hooks:
     -   id: flake8
+        args: ['--max-line-length=88', '--ignore=E266,E501,W503,F403,F401', '--max-complexity=18']
