@@ -4,7 +4,7 @@
 
 Simple Flask Extension to easily add api auth using the good tried and tested api key model.
 
-## Why ##
+## Why :man_shrugging: ##
 
 JWTs can be great.  Especially if you have 100 microservices and are growing at the rate of Facebook.  
 
