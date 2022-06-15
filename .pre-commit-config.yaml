@@ -17,3 +17,10 @@ repos:
     hooks:
     -   id: flake8
         args: ['--max-line-length=88', '--ignore=E266,E501,W503,F403,F401', '--max-complexity=18']
+-   repo: local
+    hooks:
+    -   id: pre-commit-local
+        name: bump
+        always_run: true
+        entry: ./bump.sh
+        language: script

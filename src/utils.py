@@ -10,9 +10,11 @@ from werkzeug.local import LocalProxy
 # Magic access to apikey
 current_api_key = LocalProxy(lambda: get_api_key())
 
+
 def get_api_key():
     ak = getattr(_request_ctx_stack.top, 'api_key', None)
     return ak
+
 
 def get_api_key_manager():
     try:
@@ -22,6 +24,7 @@ def get_api_key_manager():
             'You must first initializa Flask-API-Key with this'
             'application before using this method.'
         ) from None
+
 
 def get_ext_config():
     mgr = get_api_key_manager()
