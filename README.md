@@ -74,9 +74,9 @@ The extension is configured via Flask's built-in config object, app.config.  If 
 <https://flask.palletsprojects.com/en/2.0.x/api/?highlight=app%20config#configuration>
 
 
-- **FLASK_API_KEY_LOCATION** - Where to look for the api_key **'Header'**
-- **FLASK_API_KEY_HEADER_NAME** - Which header to use (only for location=Header) **'Authorization'**
-- **FLASK_API_KEY_HEADER_TYPE** - Which sub-header to use in HEADER_NAME (only for location=Header) **'Bearer'**
-- **FLASK_API_KEY_PREFIX** - api_key prefix - can be used to identify your sites keys in a breach **'oil'**
-- **FLASK_API_KEY_SECRET_LENGTH** - How many characters long the secret key portion will be **64**
-- **FLASK_API_KEY_SECRET_CHARSET** - Passlib compliant charset name to use **'ascii_62'**
+- **FLASK_API_KEY_LOCATION='Header'** - Where to look for the api_key.
+- **FLASK_API_KEY_HEADER_NAME='Authorization'** - Which header to use (only for location=Header).
+- **FLASK_API_KEY_HEADER_TYPE='Bearer'** - Which sub-header to use in HEADER_NAME (only for location=Header).
+- **FLASK_API_KEY_PREFIX='oil'** - api_key prefix - can be used to identify your sites keys in a breach.
+- **FLASK_API_KEY_SECRET_LENGTH=64** - How many characters long the secret key portion will be.
+- **FLASK_API_KEY_SECRET_CHARSET='ascii_62'** - Passlib compliant charset name to use.
