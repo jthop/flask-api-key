@@ -16,9 +16,9 @@ Simple Flask Extension to easily add api auth using the good tried and tested ap
 
 ## Why :man_shrugging: ##
 
-JWTs can be great.  Especially if you have 100 microservices and are growing at the rate of Facebook.  
+JWTs can be great.  Especially if you have 100 microservices and are growing at the rate of Facebook.
 
-But for those of us that are not scaling at the rate of Facebook or Google, JWTs may be unnecessary.  Api Keys can be instantly revoked.  No refresh-token policies to worry about (is there a secure refresh standard yet?). With just a little caching(Redis), many of the DB round-trips can be avoided as well.  But most of all, api keys are easy to use.  Your developers can get started in no time.  
+But for those of us that are not scaling at the rate of Facebook or Google, JWTs may be unnecessary.  Api Keys can be instantly revoked.  No refresh-token policies to worry about (is there a secure refresh standard yet?). With just a little caching(Redis), many of the DB round-trips can be avoided as well.  But most of all, api keys are easy to use.  Your developers can get started in no time.
 
 So obviously, we believe.  However, while there are tons of JWT/JWS/JWE,JWABC token extensions, very few api key extensions exist.  So, this is my attempt to fill that void.
 
@@ -27,7 +27,7 @@ So obviously, we believe.  However, while there are tons of JWT/JWS/JWE,JWABC to
 
 
 First things first, install it.
-    
+
 `pip install flask-api-key`
 
 
@@ -94,10 +94,10 @@ curl https://yoursite.com/api/v1/secure
 | FLASK_API_KEY_SECRET_CHARSET | `'ascii_62'` | String | Passlib compliant charset name to use |
 
 
-The extension is configured via Flask's built-in config object, app.config.  If unfamiliar with Flask's app.config, it's time to read up on flask: 
-<https://flask.palletsprojects.com/en/2.0.x/>
+The extension is configured via Flask's built-in config object, app.config.  If unfamiliar with Flask's app.config, it's time to read up on flask:
+<https://flask.palletsprojects.com/>
 
-All configuration writing should be done in flask.  However, often times it is necessary to read the config.  We have included multiple ways to access a read-only version of the config.  This read-only config has normalized keys.  The FLASK_API_KEY_ namespace has been removed and the remainder is lower case. 
+All configuration writing should be done in flask.  However, often times it is necessary to read the config.  We have included multiple ways to access a read-only version of the config.  This read-only config has normalized keys.  The FLASK_API_KEY_ namespace has been removed and the remainder is lower case.
 
 Example [^2]
 
