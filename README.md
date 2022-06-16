@@ -1,8 +1,17 @@
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![PyPI version](https://badge.fury.io/py/flask-api-key.svg)](https://badge.fury.io/py/flask-api-key)  ![GitHub last commit](https://img.shields.io/github/last-commit/jthop/flask-api-key)  [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)  [![saythanks](https://img.shields.io/badge/say-thanks-brightgreen.svg)](https://saythanks.io/to/jthop)  [![Generic badge](https://img.shields.io/badge/whos-yourdaddy-brightgreen.svg)](https://shields.io/)
-
-
-
-# flask-api-key :clap: #
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![PyPI version](https://badge.fury.io/py/flask-api-key.svg)](https://badge.fury.io/py/flask-api-key)
+![GitHub last commit](https://img.shields.io/github/last-commit/jthop/flask-api-key)
+[![saythanks](https://img.shields.io/badge/say-thanks-brightgreen.svg)](https://saythanks.io/to/jthop)
+[![Whos your daddy](https://img.shields.io/badge/whos%20your%20daddy-2.0.7rc3-brightgreen.svg)](https://shields.io/)
+[![Awesome Badges](https://img.shields.io/badge/badges-awesome-green.svg)](https://github.com/Naereen/badges)
+![Terminal](https://badgen.net/badge/icon/terminal?icon=terminal&label)
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-blue.svg)](https://GitHub.com/Naereen/ama)
+![GitHub repo size](https://img.shields.io/github/repo-size/jthop/flask-api-key?style=flat)
+![GitHub language count](https://img.shields.io/github/languages/count/jthop/flask-api-key?style=flat)
+![GitHub top language](https://img.shields.io/github/languages/top/jthop/flask-api-key?style=flat)
+![Profile View Counter](https://komarev.com/ghpvc/?username=jthop)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 Simple Flask Extension to easily add api auth using the good tried and tested api key model.
 
