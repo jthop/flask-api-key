@@ -1,4 +1,5 @@
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![PyPI version](https://badge.fury.io/py/flask-api-key.svg)](https://badge.fury.io/py/flask-api-key)  ![GitHub last commit](https://img.shields.io/github/last-commit/jthop/flask-api-key)  [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![PyPI version](https://badge.fury.io/py/flask-api-key.svg)](https://badge.fury.io/py/flask-api-key)  ![GitHub last commit](https://img.shields.io/github/last-commit/jthop/flask-api-key)  [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)  [![saythanks](https://img.shields.io/badge/say-thanks-green.svg)](https://saythanks.io/to/kennethreitz)
+
 
 # flask-api-key :clap: #
 
