@@ -12,6 +12,8 @@
 [![Profile View Counter](https://komarev.com/ghpvc/?username=jthop)](./)
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
+# flask-api-key #
+
 Simple Flask Extension to easily add api auth using the good tried and tested api key model.
 
 ## Why :man_shrugging: ##
