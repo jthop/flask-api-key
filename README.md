@@ -1,29 +1,17 @@
-
-:star_struck: 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) 
 [![Build and publish pkg](https://github.com/jthop/flask-api-key/actions/workflows/python-publish.yml/badge.svg)](https://github.com/jthop/flask-api-key/actions/workflows/python-publish.yml)
 [![PyPI version](https://badge.fury.io/py/flask-api-key.svg)](https://badge.fury.io/py/flask-api-key)
-
-:yawning_face:
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
-
-:monocle_face:
 [![GitHub last commit](https://img.shields.io/github/last-commit/jthop/flask-api-key)](https://github.com/jthop/flask-api-key)
 [![GitHub repo size](https://img.shields.io/github/repo-size/jthop/flask-api-key?style=flat)](https://github.com/jthop/flask-api-key)
 [![GitHub language count](https://img.shields.io/github/languages/count/jthop/flask-api-key?style=flat)](https://github.com/jthop/flask-api-key)
 [![GitHub top language](https://img.shields.io/github/languages/top/jthop/flask-api-key?style=flat)](https://python.org)
-
-:rofl:
 [![Profile View Counter](https://komarev.com/ghpvc/?username=jthop)](./)
 [![Visitors](https://api.visitorbadge.io/api/visitors?path=jhopper%2Fflask-api-key&label=visitors&countColor=%234c1&style=flat)](https://visitorbadge.io/status?path=jhopper%2Fflask-api-key)
-
-:thinking:
 [![Whos your daddy](https://img.shields.io/badge/whos%20your%20daddy-2.0.7rc3-brightgreen.svg)](https://14.do/)
-[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
-
-:lying_face:
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 [![works badge](https://cdn.jsdelivr.net/gh/nikku/works-on-my-machine@v0.2.0/badge.svg)](https://github.com/nikku/works-on-my-machine)
+<!-- [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/) -->
 
 
 # flask-api-key #
