@@ -1,6 +1,6 @@
 [version]
-current = 0.2.8+build.128
-previous = 0.2.7+build.127
+current = 0.2.9+build.129
+previous = 0.2.8+build.128
 
 [options]
 log_file = ican.log
