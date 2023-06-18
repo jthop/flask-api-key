@@ -262,3 +262,57 @@ release - bump version by at least patch, then perform full git commit with tag
 06-18-2023 09:05:59 | VERBOSE | Generated env/ctx: {'version': '0.2.6+build.126', 'semantic': '0.2.6+build.126', 'public': '0.2.6', 'pep440': '0.2.6.126', 'git': '0.2.4-dev.DIRTY+8722f6f.126', 'tag': 'v0.2.6', 'major': '0', 'minor': '2', 'patch': '6', 'prerelease': 'None', 'build': 'build.126', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '0.2.5+build.125'}
 06-18-2023 09:05:59 | ALT_INFO | +RUNNING step.__CLI__<git add .>
 06-18-2023 09:05:59 | VERBOSE | running cmd - ['git', 'add', '.']
+06-18-2023 09:05:59 | VERBOSE | Generated env/ctx: {'version': '0.2.6+build.126', 'semantic': '0.2.6+build.126', 'public': '0.2.6', 'pep440': '0.2.6.126', 'git': '0.2.4-dev.DIRTY+8722f6f.126', 'tag': 'v0.2.6', 'major': '0', 'minor': '2', 'patch': '6', 'prerelease': 'None', 'build': 'build.126', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '0.2.5+build.125'}
+06-18-2023 09:05:59 | VERBOSE | rendered cmd: git commit -m "auto-commit for v0.2.6"
+06-18-2023 09:05:59 | ALT_INFO | +RUNNING step.__CLI__<git commit -m "auto-commit for v0.2.6">
+06-18-2023 09:05:59 | VERBOSE | running cmd - ['git', 'commit', '-m', 'auto-commit for v0.2.6']
+06-18-2023 09:05:59 | VERBOSE | Generated env/ctx: {'version': '0.2.6+build.126', 'semantic': '0.2.6+build.126', 'public': '0.2.6', 'pep440': '0.2.6.126', 'git': '0.2.4-dev.DIRTY+8722f6f.126', 'tag': 'v0.2.6', 'major': '0', 'minor': '2', 'patch': '6', 'prerelease': 'None', 'build': 'build.126', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '0.2.5+build.125'}
+06-18-2023 09:05:59 | VERBOSE | rendered cmd: git tag -a v0.2.6 -m "automated tag for release v0.2.6" --sign
+06-18-2023 09:05:59 | ALT_INFO | +RUNNING step.__CLI__<git tag -a v0.2.6 -m "automated tag for release v0.2.6" --sign>
+06-18-2023 09:05:59 | VERBOSE | running cmd - ['git', 'tag', '-a', 'v0.2.6', '-m', 'automated tag for release v0.2.6', '--sign']
+06-18-2023 09:06:00 | VERBOSE | Generated env/ctx: {'version': '0.2.6+build.126', 'semantic': '0.2.6+build.126', 'public': '0.2.6', 'pep440': '0.2.6.126', 'git': '0.2.4-dev.DIRTY+8722f6f.126', 'tag': 'v0.2.6', 'major': '0', 'minor': '2', 'patch': '6', 'prerelease': 'None', 'build': 'build.126', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '0.2.5+build.125'}
+06-18-2023 09:06:00 | VERBOSE | rendered cmd: git push origin HEAD v0.2.6
+06-18-2023 09:06:00 | ALT_INFO | +RUNNING step.__CLI__<git push origin HEAD v0.2.6>
+06-18-2023 09:06:00 | VERBOSE | running cmd - ['git', 'push', 'origin', 'HEAD', 'v0.2.6']
+06-18-2023 09:06:06 | ALT_INFO | +END pipeline.GIT
+06-18-2023 09:06:06 | ALT_INFO | +END pipeline.RELEASE
+06-18-2023 09:06:06 | INFO | +FINISHED pipeline.RELEASE
+06-18-2023 09:08:39 | INFO |         ---===::: Welcome to ican :::===---
+06-18-2023 09:08:39 | VERBOSE | --verbose detected.  Displaying verbose messaging.
+06-18-2023 09:08:39 | VERBOSE | parsing file config VERSION[./flask_api_key/__init__.py]
+06-18-2023 09:08:39 | VERBOSE | regex generated for __version__
+06-18-2023 09:08:39 | VERBOSE | parsing file config PUBLIC[./flask_api_key/__init__.py]
+06-18-2023 09:08:39 | VERBOSE | regex generated for __public_version__
+06-18-2023 09:08:39 | VERBOSE | parsing GIT pipeline
+06-18-2023 09:08:39 | VERBOSE | GIT - commit to git with current version as tag
+06-18-2023 09:08:39 | VERBOSE | STEP - GIT.step1 - git add .
+06-18-2023 09:08:39 | VERBOSE | STEP - GIT.step2 - git commit -m "auto-commit for {tag}"
+06-18-2023 09:08:39 | VERBOSE | STEP - GIT.step3 - git tag -a {tag} -m "automated tag for release {tag}" --sign
+06-18-2023 09:08:39 | VERBOSE | STEP - GIT.step4 - git push origin HEAD {tag}
+06-18-2023 09:08:39 | VERBOSE | parsing RELEASE pipeline
+06-18-2023 09:08:39 | VERBOSE | RELEASE - bump version by at least patch, then perform full git commit with tag
+06-18-2023 09:08:39 | VERBOSE | STEP - RELEASE.step1 - $ICAN(bump patch)
+06-18-2023 09:08:39 | VERBOSE | STEP - RELEASE.step2 - $ICAN(run git)
+06-18-2023 09:08:39 | VERBOSE | discovered 0.2.6+build.126 @ CONFIG.version
+06-18-2023 09:08:39 | VERBOSE | found git root @ /Users/jhopper/Dropbox/dev/flask-api-key
+06-18-2023 09:08:39 | VERBOSE | Discovered 0.2.6-dev.DIRTY+f098bca.126 @ GIT.version
+06-18-2023 09:08:39 | ALT_INFO | +BEGIN pipeline.RELEASE
+06-18-2023 09:08:39 | VERBOSE | Generated env/ctx: {'version': '0.2.6+build.126', 'semantic': '0.2.6+build.126', 'public': '0.2.6', 'pep440': '0.2.6.126', 'git': '0.2.6-dev.DIRTY+f098bca.126', 'tag': 'v0.2.6', 'major': '0', 'minor': '2', 'patch': '6', 'prerelease': 'None', 'build': 'build.126', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '0.2.5+build.125'}
+06-18-2023 09:08:39 | ALT_INFO | +RUNNING step.__INTERNAL__<bump patch>
+06-18-2023 09:08:39 | VERBOSE | running internal cmd - bump patch
+06-18-2023 09:08:39 | VERBOSE | Beginning bump of <PATCH>
+06-18-2023 09:08:39 | VERBOSE | VERSION[./flask_api_key/__init__.py] - updating to 0.2.7+build.127
+06-18-2023 09:08:39 | VERBOSE | VERSION[./flask_api_key/__init__.py] - found 1 matches
+06-18-2023 09:08:39 | VERBOSE | VERSION[./flask_api_key/__init__.py] - update COMPLETE
+06-18-2023 09:08:39 | VERBOSE | PUBLIC[./flask_api_key/__init__.py] - updating to 0.2.7
+06-18-2023 09:08:39 | VERBOSE | PUBLIC[./flask_api_key/__init__.py] - NO MATCHES!
+06-18-2023 09:08:39 | VERBOSE | persisting version - 0.2.7+build.127
+06-18-2023 09:08:39 | VERBOSE | wrote config file
+06-18-2023 09:08:39 | INFO | Version: 0.2.7+build.127
+06-18-2023 09:08:39 | VERBOSE | Generated env/ctx: {'version': '0.2.7+build.127', 'semantic': '0.2.7+build.127', 'public': '0.2.7', 'pep440': '0.2.7.127', 'git': '0.2.6-dev.DIRTY+f098bca.127', 'tag': 'v0.2.7', 'major': '0', 'minor': '2', 'patch': '7', 'prerelease': 'None', 'build': 'build.127', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '0.2.6+build.126'}
+06-18-2023 09:08:39 | ALT_INFO | +RUNNING step.__INTERNAL__<run git>
+06-18-2023 09:08:39 | VERBOSE | running internal cmd - run git
+06-18-2023 09:08:39 | ALT_INFO | +BEGIN pipeline.GIT
+06-18-2023 09:08:39 | VERBOSE | Generated env/ctx: {'version': '0.2.7+build.127', 'semantic': '0.2.7+build.127', 'public': '0.2.7', 'pep440': '0.2.7.127', 'git': '0.2.6-dev.DIRTY+f098bca.127', 'tag': 'v0.2.7', 'major': '0', 'minor': '2', 'patch': '7', 'prerelease': 'None', 'build': 'build.127', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '0.2.6+build.126'}
+06-18-2023 09:08:39 | ALT_INFO | +RUNNING step.__CLI__<git add .>
+06-18-2023 09:08:39 | VERBOSE | running cmd - ['git', 'add', '.']
