@@ -1,25 +1,31 @@
-# This workflow will upload a Python Package using Twine when a release is created
-# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+#
+#        _ _   _           _                  _   _                 
+#       (_) | | |         | |                | | (_)                
+#   __ _ _| |_| |__  _   _| |__     __ _  ___| |_ _  ___  _ __  ___ 
+#  / _` | | __| '_ \| | | | '_ \   / _` |/ __| __| |/ _ \| '_ \/ __|
+# | (_| | | |_| | | | |_| | |_) | | (_| | (__| |_| | (_) | | | \__ \
+#  \__, |_|\__|_| |_|\__,_|_.__/   \__,_|\___|\__|_|\___/|_| |_|___/
+#   __/ |                                                           
+#  |___/                        - http://www.network-science.de/ascii/                                                       
+#
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Build and publish pkg
+                                     
+name: build, publish, and release
 
 on:
   [push]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'build')"
+    #if: "contains(github.event.head_commit.message, 'build')"
+    if: startsWith(github.ref, 'refs/tags/')
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
@@ -27,11 +33,17 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install build
-    - name: Build package
-      run: python -m build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+        pip install build twine
+    - name: Build and publish
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: |
+        python -m build
+        twine upload dist/*
+    - name: Release
+      uses: softprops/action-gh-release@v1
       with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+        files: |
+          dist/*.whl
+        name: RELEASE-${{ github.ref_name}}
