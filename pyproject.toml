@@ -22,4 +22,7 @@ dependencies = [
 dynamic = ["version"]
 
 [tool.setuptools.dynamic]
-version = {attr = "flask_api_key.__version__"}
+version = {attr = "flask_api_key.__public_version__"}
+
+[tool.black]
+line-length = 88

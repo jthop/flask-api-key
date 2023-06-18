@@ -1,0 +1,29 @@
+[version]
+current = 0.2.2+build.122
+previous = 0.2.1+build.121
+
+[options]
+log_file = ican.log
+
+[file: version]
+file = ./flask_api_key/__init__.py
+variable = __version__
+style = semantic
+
+[file: public]
+file = ./flask_api_key/__init__.py
+variable = __public_version__
+style = public
+
+[pipeline: git]
+description = commit to git with current version as tag
+step1 = git add .
+step2 = git commit -m "auto-commit for {tag}"
+step3 = git tag -a {tag} -m "automated tag for release {tag}" --sign
+step4 = git push origin HEAD {tag}
+
+[pipeline: release]
+description = bump version by at least patch, then perform full git commit with tag
+step1 = $ICAN(bump patch)
+step2 = $ICAN(run git)
+

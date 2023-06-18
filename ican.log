@@ -1,0 +1,76 @@
+06-18-2023 08:45:15 | INFO | init COMPLETE
+06-18-2023 08:50:03 | INFO |         ---===::: Welcome to ican :::===---
+06-18-2023 08:50:03 | VERBOSE | --verbose detected.  Displaying verbose messaging.
+06-18-2023 08:50:03 | VERBOSE | parsing file config VERSION[./flask_api_key/__init__.py]
+06-18-2023 08:50:03 | VERBOSE | regex generated for __version__
+06-18-2023 08:50:03 | VERBOSE | parsing file config PUBLIC[./flask_api_key/__init__.py]
+06-18-2023 08:50:03 | VERBOSE | regex generated for __public_version__
+06-18-2023 08:50:03 | VERBOSE | parsing GIT pipeline
+06-18-2023 08:50:03 | VERBOSE | GIT - commit to git with current version as tag
+06-18-2023 08:50:03 | VERBOSE | STEP - GIT.step1 - git add .
+06-18-2023 08:50:03 | VERBOSE | STEP - GIT.step2 - git commit -m "auto-commit for {tag}"
+06-18-2023 08:50:03 | VERBOSE | STEP - GIT.step3 - git tag -a {tag} -m "automated tag for release {tag}" --sign
+06-18-2023 08:50:03 | VERBOSE | STEP - GIT.step4 - git push origin HEAD {tag}
+06-18-2023 08:50:03 | VERBOSE | parsing RELEASE pipeline
+06-18-2023 08:50:03 | VERBOSE | RELEASE - bump version by at least patch, then perform full git commit with tag
+06-18-2023 08:50:03 | VERBOSE | STEP - RELEASE.step1 - $ICAN(bump patch)
+06-18-2023 08:50:03 | VERBOSE | STEP - RELEASE.step2 - $ICAN(run git)
+06-18-2023 08:50:03 | VERBOSE | discovered 0.2.1+build.121 @ CONFIG.version
+06-18-2023 08:50:03 | VERBOSE | found git root @ /Users/jhopper/Dropbox/dev/flask-api-key
+06-18-2023 08:50:03 | VERBOSE | Command '['git', 'describe', '--dirty', '--tags', '--long']' returned non-zero exit status 128. (code-12) v0.1.42+build.297
+06-18-2023 08:50:03 | VERBOSE | Git-versions are disabled. Does this repo have a tag?
+06-18-2023 08:50:03 | INFO | 
+Available Commands  
+06-18-2023 08:50:03 | INFO | ══════════════════
+
+06-18-2023 08:50:03 | INFO | git - commit to git with current version as tag
+release - bump version by at least patch, then perform full git commit with tag
+06-18-2023 08:50:03 | INFO | 
+
+06-18-2023 08:50:07 | INFO |         ---===::: Welcome to ican :::===---
+06-18-2023 08:50:07 | VERBOSE | --verbose detected.  Displaying verbose messaging.
+06-18-2023 08:50:07 | VERBOSE | discovered 0.2.1+build.121 @ CONFIG.version
+06-18-2023 08:50:07 | VERBOSE | found git root @ /Users/jhopper/Dropbox/dev/flask-api-key
+06-18-2023 08:50:07 | VERBOSE | Command '['git', 'describe', '--dirty', '--tags', '--long']' returned non-zero exit status 128. (code-12) v0.1.42+build.297
+06-18-2023 08:50:07 | VERBOSE | Git-versions are disabled. Does this repo have a tag?
+06-18-2023 08:50:07 | INFO | Current semantic version: 0.2.1+build.121
+06-18-2023 08:57:17 | INFO |         ---===::: Welcome to ican :::===---
+06-18-2023 08:57:17 | VERBOSE | --verbose detected.  Displaying verbose messaging.
+06-18-2023 08:57:17 | VERBOSE | parsing file config VERSION[./flask_api_key/__init__.py]
+06-18-2023 08:57:17 | VERBOSE | regex generated for __version__
+06-18-2023 08:57:17 | VERBOSE | parsing file config PUBLIC[./flask_api_key/__init__.py]
+06-18-2023 08:57:17 | VERBOSE | regex generated for __public_version__
+06-18-2023 08:57:17 | VERBOSE | parsing GIT pipeline
+06-18-2023 08:57:17 | VERBOSE | GIT - commit to git with current version as tag
+06-18-2023 08:57:17 | VERBOSE | STEP - GIT.step1 - git add .
+06-18-2023 08:57:17 | VERBOSE | STEP - GIT.step2 - git commit -m "auto-commit for {tag}"
+06-18-2023 08:57:17 | VERBOSE | STEP - GIT.step3 - git tag -a {tag} -m "automated tag for release {tag}" --sign
+06-18-2023 08:57:17 | VERBOSE | STEP - GIT.step4 - git push origin HEAD {tag}
+06-18-2023 08:57:17 | VERBOSE | parsing RELEASE pipeline
+06-18-2023 08:57:17 | VERBOSE | RELEASE - bump version by at least patch, then perform full git commit with tag
+06-18-2023 08:57:17 | VERBOSE | STEP - RELEASE.step1 - $ICAN(bump patch)
+06-18-2023 08:57:17 | VERBOSE | STEP - RELEASE.step2 - $ICAN(run git)
+06-18-2023 08:57:17 | VERBOSE | discovered 0.2.1+build.121 @ CONFIG.version
+06-18-2023 08:57:17 | VERBOSE | found git root @ /Users/jhopper/Dropbox/dev/flask-api-key
+06-18-2023 08:57:17 | VERBOSE | Command '['git', 'describe', '--dirty', '--tags', '--long']' returned non-zero exit status 128. (code-12) v0.1.42+build.297
+06-18-2023 08:57:17 | VERBOSE | Git-versions are disabled. Does this repo have a tag?
+06-18-2023 08:57:17 | ALT_INFO | +BEGIN pipeline.RELEASE
+06-18-2023 08:57:17 | VERBOSE | Generated env/ctx: {'version': '0.2.1+build.121', 'semantic': '0.2.1+build.121', 'public': '0.2.1', 'pep440': '0.2.1.121', 'git': 'None', 'tag': 'v0.2.1', 'major': '0', 'minor': '2', 'patch': '1', 'prerelease': 'None', 'build': 'build.121', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '[None]'}
+06-18-2023 08:57:17 | ALT_INFO | +RUNNING step.__INTERNAL__<bump patch>
+06-18-2023 08:57:17 | VERBOSE | running internal cmd - bump patch
+06-18-2023 08:57:17 | VERBOSE | Beginning bump of <PATCH>
+06-18-2023 08:57:17 | VERBOSE | VERSION[./flask_api_key/__init__.py] - updating to 0.2.2+build.122
+06-18-2023 08:57:17 | VERBOSE | VERSION[./flask_api_key/__init__.py] - found 1 matches
+06-18-2023 08:57:17 | VERBOSE | VERSION[./flask_api_key/__init__.py] - update COMPLETE
+06-18-2023 08:57:17 | VERBOSE | PUBLIC[./flask_api_key/__init__.py] - updating to 0.2.2
+06-18-2023 08:57:17 | VERBOSE | PUBLIC[./flask_api_key/__init__.py] - NO MATCHES!
+06-18-2023 08:57:17 | VERBOSE | persisting version - 0.2.2+build.122
+06-18-2023 08:57:17 | VERBOSE | wrote config file
+06-18-2023 08:57:17 | INFO | Version: 0.2.2+build.122
+06-18-2023 08:57:17 | VERBOSE | Generated env/ctx: {'version': '0.2.2+build.122', 'semantic': '0.2.2+build.122', 'public': '0.2.2', 'pep440': '0.2.2.122', 'git': 'None', 'tag': 'v0.2.2', 'major': '0', 'minor': '2', 'patch': '2', 'prerelease': 'None', 'build': 'build.122', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '0.2.1+build.121'}
+06-18-2023 08:57:17 | ALT_INFO | +RUNNING step.__INTERNAL__<run git>
+06-18-2023 08:57:17 | VERBOSE | running internal cmd - run git
+06-18-2023 08:57:17 | ALT_INFO | +BEGIN pipeline.GIT
+06-18-2023 08:57:17 | VERBOSE | Generated env/ctx: {'version': '0.2.2+build.122', 'semantic': '0.2.2+build.122', 'public': '0.2.2', 'pep440': '0.2.2.122', 'git': 'None', 'tag': 'v0.2.2', 'major': '0', 'minor': '2', 'patch': '2', 'prerelease': 'None', 'build': 'build.122', 'env': 'production', 'root': '/Users/jhopper/Dropbox/dev/flask-api-key', 'previous': '0.2.1+build.121'}
+06-18-2023 08:57:17 | ALT_INFO | +RUNNING step.__CLI__<git add .>
+06-18-2023 08:57:17 | VERBOSE | running cmd - ['git', 'add', '.']
