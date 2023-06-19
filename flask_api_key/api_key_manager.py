@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 """
-from json import jsonify
+from flask import jsonify
 
 from .exceptions import APIKeyError
 from .exceptions import APIKeyNotFound
