@@ -149,6 +149,20 @@ class APIKey(object):
 
         self.hashed_key = self._hash(self.full_key)
 
+    def gen_key_from_value(self, label, value):
+        """62 character charset has 5.95 entropy per character
+           64 character secret has ~380 bits entropy
+        """
+
+        uuid = uuid4()
+
+        self.label = label
+        self.uuid = uuid.hex
+        self.friendly_uuid = str(uuid)
+        self._secret = value
+
+        self.hashed_key = self._hash(self.full_key)
+
     @property
     def full_key(self):
         """If we have all the pieces, construct the full_key.  Only

@@ -16,7 +16,6 @@ from .api_key import APIKey
 
 
 class APIKeyManager(object):
-
     POSSIBLE_LOCATIONS = ['header']
 
     def __init__(self, app=None):
@@ -68,6 +67,7 @@ class APIKeyManager(object):
         """Simple method to register a default errorhandler.  Mainly
         a placeholder for potentially more handlers in the future.
         """
+
         @app.errorhandler(APIKeyError)
         def handle_api_key_error(e):
             return self._error_handler_callback(e)
@@ -257,4 +257,25 @@ class APIKeyManager(object):
 
         ak = APIKey()
         ak.gen_key(label)
+        return self._create_api_key_callback(ak.export())
+
+    def create_from_value(self, label, value):
+        """Using this wrapper is the recommended way to import your apikeys.
+
+        Attr:
+            label - required.  Simple label for the key.
+            value - required.  Key value to create from.
+
+        -EXAMPLE USAGE-
+
+        mgr = get_apikey_manager()
+        my_key = mgr.create_from_value('MY_SECURE_APIKEY', 'MY_API_KEY')
+
+        # Optionally
+        my_key.my_other_attribute = 'foo'
+        my_key.save()
+        """
+
+        ak = APIKey()
+        ak.gen_key_from_value(label, value)
         return self._create_api_key_callback(ak.export())
