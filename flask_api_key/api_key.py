@@ -70,7 +70,7 @@ class APIKey(object):
         }
         return d
 
-    def _genword(length=64, _charset='ascii_62'):
+    def _genword(self, length=64, _charset='ascii_62'):
         """Signature should be compatible with passlib.pwd.genword
         Args:
             length: Number of characters long the word will be
